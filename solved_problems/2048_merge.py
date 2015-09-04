@@ -13,7 +13,7 @@ def merge(nums):
     Takes a list as input
     returns merged pairs with
     non zero values shifted to the left.
-    fancy interactive unit test below, no output means no problems.
+    fancy interactive doc test below, no output means no problems.
     >>> merge([2, 0, 2, 4])
     [4, 4, 0, 0]
     >>> merge([0, 0, 2, 2])
