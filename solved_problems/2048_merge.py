@@ -5,6 +5,7 @@ Created on Thu Sep  3 17:55:56 2015
 @author: Rafeh
 """
 import unittest
+import doctest
 
 
 def merge(nums):
@@ -12,11 +13,17 @@ def merge(nums):
     Takes a list as input
     returns merged pairs with
     non zero values shifted to the left.
-    [2, 0, 2, 4] should return [4, 4, 0, 0]
-    [0, 0, 2, 2] should return [4, 0, 0, 0]
-    [2, 2, 0, 0] should return [4, 0, 0, 0]
-    [2, 2, 2, 2, 2] should return [4, 4, 2, 0, 0]
-    [8, 16, 16, 8] should return [8, 32, 8, 0]
+    fancy interactive unit test below, no output means no problems.
+    >>> merge([2, 0, 2, 4])
+    [4, 4, 0, 0]
+    >>> merge([0, 0, 2, 2])
+    [4, 0, 0, 0]
+    >>> merge([2, 2, 0, 0])
+    [4, 0, 0, 0]
+    >>> merge([2, 2, 2, 2, 2])
+    [4, 4, 2, 0, 0]
+    >>> merge([8, 16, 16, 8])
+    [8, 32, 8, 0]
     '''
     slide = []  # Append non-zeroes first
     for num in nums:
@@ -52,6 +59,8 @@ def merge(nums):
         if len(nums) != len(slide):
             slide.append(0)
     return slide
+
+doctest.testmod()
 
 
 class Test(unittest.TestCase):
