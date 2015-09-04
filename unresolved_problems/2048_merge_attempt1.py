@@ -7,7 +7,7 @@ Created on Thu Sep  3 17:55:56 2015
 # import unittest
 
 
-nums = [0, 0, 2, 2]
+nums = [8, 16, 16, 8]  # input
 
 slide = []  # Append non-zeroes first
 for num in nums:
@@ -20,14 +20,18 @@ pairs = []
 for idx, num in enumerate(slide):
     if idx == len(slide)-1:
         pairs.append(num)
+        if len(pairs) != len(nums):
+            pairs.append(0)
         break
     if num == slide[idx+1]:
         if num != 0:
             pairs.append(num*2)
             slide[idx+1] -= slide[idx+1]
-            pairs.append(slide[idx+1])
+            slide[idx+1], slide[idx+2] = slide[idx+2], slide[idx+1]
         else:
             pairs.append(num)
+    else:
+            pairs.append(num)  # Even if they don't match you must append
 print(pairs)
 
 
