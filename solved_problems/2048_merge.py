@@ -1,29 +1,25 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Sep  3 17:55:56 2015
-2048_merge_attempt1.py
-@author: Rafeh
-"""
+'''
+Takes a list as input
+returns merged pairs with
+non zero values shifted to the left.
+fancy interactive doc test below, no output means no problems.
+>>> merge([2, 0, 2, 4])
+[4, 4, 0, 0,0]
+>>> merge([0, 0, 2, 2])
+[4, 0, 0, 0]
+>>> merge([2, 2, 0, 0])
+[4, 0, 0, 0]
+>>> merge([2, 2, 2, 2, 2])
+[4, 4, 2, 0, 0]
+>>> merge([8, 16, 16, 8])
+[8, 32, 8, 0]
+'''
 import unittest
 
 
 def merge(nums):
-    '''
-    Takes a list as input
-    returns merged pairs with
-    non zero values shifted to the left.
-    fancy interactive doc test below, no output means no problems.
-    >>> merge([2, 0, 2, 4])
-    [4, 4, 0, 0]
-    >>> merge([0, 0, 2, 2])
-    [4, 0, 0, 0]
-    >>> merge([2, 2, 0, 0])
-    [4, 0, 0, 0]
-    >>> merge([2, 2, 2, 2, 2])
-    [4, 4, 2, 0, 0]
-    >>> merge([8, 16, 16, 8])
-    [8, 32, 8, 0]
-    '''
+
     slide = [num for num in nums if num]
     pairs = []
     for i, num in enumerate(slide):
