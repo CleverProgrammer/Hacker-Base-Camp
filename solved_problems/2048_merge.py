@@ -5,7 +5,6 @@ Created on Thu Sep  3 17:55:56 2015
 @author: Rafeh
 """
 import unittest
-import doctest
 
 
 def merge(nums):
@@ -25,42 +24,20 @@ def merge(nums):
     >>> merge([8, 16, 16, 8])
     [8, 32, 8, 0]
     '''
-    slide = []  # Append non-zeroes first
-    for num in nums:
-        if num != 0:
-            slide.append(num)
-    for num in nums:
-        if num == 0:
-            slide.append(num)
+    slide = [num for num in nums if num]
     pairs = []
-    for idx, num in enumerate(slide):
-        if idx == len(slide)-1:
+    for i, num in enumerate(slide):
+        if i == len(slide)-1:
             pairs.append(num)
-            if len(pairs) != len(nums):
-                pairs.append(0)
             break
-        if num == slide[idx+1]:
-            if num != 0:
-                pairs.append(num*2)
-                slide[idx+1] -= slide[idx+1]
-                # slide[idx+1], slide[idx+2] = slide[idx+2], slide[idx+1]
-            else:
-                pairs.append(num)
+        elif num == slide[i+1]:
+            pairs.append(num*2)
+            slide[i+1] = None
         else:
-                pairs.append(num)  # Even if they don't match you must append
-    slide = []  # Append non-zeroes first
-    for num in pairs:
-        if num != 0:
-            slide.append(num)
-    for num in nums:
-        if num == 0:
-            slide.append(num)
-    for i in range(len(nums) - len(slide)):
-        if len(nums) != len(slide):
-            slide.append(0)
+            pairs.append(num)
+    slide = [pair for pair in pairs if pair]
+    slide.extend([0] * (len(nums) - len(slide)))
     return slide
-
-doctest.testmod()
 
 
 class Test(unittest.TestCase):
@@ -83,3 +60,7 @@ class Test(unittest.TestCase):
 
     def test6(self):
         self.assertEqual(merge([8, 16, 16, 8, 2, 6]), [8, 32, 8, 2, 6, 0])
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
