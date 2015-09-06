@@ -1,41 +1,48 @@
 # -*- coding: utf-8 -*-
-'''
-Takes a list as input
-returns merged pairs with
-non zero values shifted to the left.
-fancy interactive doc test below, no output means no problems.
->>> merge([2, 0, 2, 4])
-[4, 4, 0, 0,0]
->>> merge([0, 0, 2, 2])
-[4, 0, 0, 0]
->>> merge([2, 2, 0, 0])
-[4, 0, 0, 0]
->>> merge([2, 2, 2, 2, 2])
-[4, 4, 2, 0, 0]
->>> merge([8, 16, 16, 8])
-[8, 32, 8, 0]
-'''
+"""
+Created on Thu Sep  3 17:55:56 2015
+2048_merge_attempt1.py
+@author: Rafeh
+"""
 import unittest
 
 
 def merge(nums):
-
-    slide = [num for num in nums if num]
+    '''
+    Takes a list as input
+    returns merged pairs with
+    non zero values shifted to the left.
+    fancy interactive doc test below, no output means no problems.
+    >>> merge([2, 0, 2, 4])
+    [4, 4, 0, 0]
+    >>> merge([0, 0, 2, 2])
+    [4, 0, 0, 0]
+    >>> merge([2, 2, 0, 0])
+    [4, 0, 0, 0]
+    >>> merge([2, 2, 2, 2, 2])
+    [4, 4, 2, 0, 0]
+    >>> merge([8, 16, 16, 8])
+    [8, 32, 8, 0]
+    '''
     pairs = []
-    for i, num in enumerate(slide):
-        if i == len(slide)-1:
-            pairs.append(num)
-            break
-        elif num == slide[i+1]:
-            pairs.append(num*2)
-            slide[i+1] = None
+    prev = None
+    for idx, num in enumerate(nums):
+        if not num:
+            continue
+        if prev is None:
+            prev = num
+        elif num == prev:
+            pairs.append(num+prev)
+            prev = None
         else:
-            pairs.append(num)
-    slide = [pair for pair in pairs if pair]
-    slide.extend([0] * (len(nums) - len(slide)))
-    return slide
+            pairs.append(prev)
+            prev = num
+    if prev is not None:
+        pairs.append(prev)
+    pairs.extend([0] * (len(nums) - len(pairs)))
+    return pairs
 
-
+merge([2, 0, 2, 4])
 class Test(unittest.TestCase):
         # python -m unittest 2048_merge_attempt1.py in Terminal
     def test1(self):
