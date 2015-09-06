@@ -26,7 +26,7 @@ def merge(nums):
     '''
     pairs = []
     prev = None
-    for idx, num in enumerate(nums):
+    for num in nums:
         if not num:
             continue
         if prev is None:
