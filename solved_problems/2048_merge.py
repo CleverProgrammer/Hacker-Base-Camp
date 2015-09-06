@@ -42,7 +42,7 @@ def merge(nums):
     pairs.extend([0] * (len(nums) - len(pairs)))
     return pairs
 
-merge([2, 0, 2, 4])
+
 class Test(unittest.TestCase):
         # python -m unittest 2048_merge_attempt1.py in Terminal
     def test1(self):
