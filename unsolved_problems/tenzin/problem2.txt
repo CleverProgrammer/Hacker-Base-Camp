@@ -1,4 +1,0 @@
-'''
-Take a list as input. Iterate over it. Return the list values in 
-reverse
-'''
