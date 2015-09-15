@@ -37,7 +37,7 @@ def merge(nums):
         else:
             pairs.append(prev)
             prev = num
-    if prev is not None:
+    if prev is not None:  # Append last value if non-zero
         pairs.append(prev)
     pairs.extend([0] * (len(nums) - len(pairs)))
     return pairs
