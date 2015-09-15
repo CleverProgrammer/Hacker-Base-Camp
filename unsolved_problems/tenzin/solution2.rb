@@ -1,9 +1,9 @@
-'''
+=begin
 Take a list as input
 return the sum of the list as output
 bonus: take the list as USER_INPUT (but work on it without user input 
 first)
-'''
+=end
 
 list1 = []
 
@@ -18,7 +18,6 @@ num3 = gets.chomp.to_i
 
 list1.push(num1, num2, num3)
 
-total = 0
+list1.inject(:+)
 
-list1.each { |a| total += a}
 
