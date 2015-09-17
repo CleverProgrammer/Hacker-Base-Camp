@@ -9,20 +9,22 @@ converter_choice = gets.chomp.downcase
 
 if converter_choice == "cf".chomp
     puts "Type a temperature in celsius please!"
-    celcius_temperature = gets.chomp.to_i
-    if celcius_temperature.is_a? Integer 
-        celcius_temperature * (9/5.0) + 32
-    else 
-        puts "Please enter a number! That wasn't a number."
+    celcius_temperature = gets.chomp
+    number = Float( celcius_temperature ) rescue nil
+    if number.nil? 
+        puts "#{celcius_temperature} is not a number"
+    else
+        number * 9/5.0 + 32
     end
 
 elsif converter_choice == 'fc'
     puts "Type a temperature in fahrenheit please!"
-    fahrenheit_temperature = gets.chomp.to_i
-    if fahrenheit_temperature.is_a? Integer
-        (fahrenheit_temperature - 32) * (5/9.0)
-    else 
-        puts "Please enter a number! That wasn't a number."
+    fahrenheit_temperature = gets.chomp
+    number = Float( fahrenheit_temperature ) rescue nil
+    if number.nil? 
+        puts "#{fahrenheit_temperature} is not a number"
+    else
+        (number - 32) * 5.0/9
     end
 
 else 
