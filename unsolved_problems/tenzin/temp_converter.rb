@@ -24,7 +24,7 @@ elsif converter_choice == 'fc'
     if number.nil? 
         puts "#{fahrenheit_temperature} is not a number"
     else
-        (number - 32) * 5.0/9
+       (number - 32) * 5.0/9
     end
 
 else 
@@ -35,5 +35,5 @@ end
 
 end
 
-temp_converter
+puts temp_converter
 
