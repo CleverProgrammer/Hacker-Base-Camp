@@ -34,3 +34,4 @@ slow when i try to run a big number. How the hell do i fix this, qatyler?
 
 =end
 
+largest_prime_factor(200000)
