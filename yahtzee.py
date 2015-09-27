@@ -72,15 +72,16 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
     Returns a floating point expected value
     """
     new_score = 0
-    total_score = 0
+    total_score = 0.0
 
-    all_possibilities_for_free_dice = gen_all_sequences(num_free_sides, num_free_dice):
-    for possibility in all_possibilities:
-        new_hand = possibilty + held_dice
+    all_possibilities_for_free_dice = gen_all_sequences(range(1, num_die_sides + 1), num_free_dice)
+    for possibility in all_possibilities_for_free_dice:
+        new_hand = possibility + held_dice
+        print (new_hand, "-->", score(new_hand))
         new_score = score(new_hand)
         total_score += new_score
 
-    return total_score / len(all_possibilitie)
+    return total_score / len(all_possibilities_for_free_dice)
 
 
 def gen_all_holds(hand):
@@ -124,16 +125,7 @@ def run_example():
     """
     Compute the dice to hold and expected score for an example hand
     """
-    print(gen_all_sequences([1,3,4], 2))
-    doctest.testmod()
-    num_die_sides = 6
-    hand = (1, 1, 1, 5, 6)
-    #hand_score, hold = strategy(hand, num_die_sides)
-    #print ("Best strategy for hand", hand, "is to hold", hold, "with expected score", hand_score)
-
+    print(expected_value((2, 2), 6, 2))
+    return
 
 run_example()
-
-
-# import poc_holds_testsuite
-# poc_holds_testsuite.run_suite(gen_all_holds)
