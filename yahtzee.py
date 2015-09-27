@@ -71,10 +71,16 @@ def expected_value(held_dice, num_die_sides, num_free_dice):
 
     Returns a floating point expected value
     """
+    new_score = 0
+    total_score = 0
 
-    die_possibilities = list(range(1, num_die_sides + 1))
-    expected_value_per_die = sum(die_possibilities) / len(die_possibilities)
-    return sum(held_dice) + expected_value_per_die * num_free_dice
+    all_possibilities_for_free_dice = gen_all_sequences(num_free_sides, num_free_dice):
+    for possibility in all_possibilities:
+        new_hand = possibilty + held_dice
+        new_score = score(new_hand)
+        total_score += new_score
+
+    return total_score / len(all_possibilitie)
 
 
 def gen_all_holds(hand):
