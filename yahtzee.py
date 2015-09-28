@@ -93,10 +93,11 @@ def gen_all_holds(hand):
     Returns a set of tuples, where each tuple is dice to hold
     """
 
-    hand_choices = []
-    #for dies_to_keep in len(hand):
-    #    for combo in gen_all_sequences()
-    return set([()])
+    hold_choices = []
+    for length in range(1, len(hand) + 1):
+        for held_cards in gen_all_sequences(hand, length):
+            hold_choices.append(held_cards)
+    return set(hold_choices)
 
 
 def strategy(hand, num_die_sides):
@@ -111,7 +112,7 @@ def strategy(hand, num_die_sides):
     the second element is a tuple of the dice to hold
     """
     max_expected = 0
-    max_hand = ()
+    max_hand = None
     for hand in gen_all_holds(hand):
         expected_value = expected_value(hand, len(hand), num_die_sides)
         if expected_value > max_expected:
@@ -123,9 +124,14 @@ def strategy(hand, num_die_sides):
 
 def run_example():
     """
-    Compute the dice to hold and expected score for an example hand
+    Compute the dice to hold and expected score for an example
     """
+
     print(expected_value((2, 2), 6, 2))
+    print("3, 5, 2, --> ", gen_all_holds([3, 5, 2]))
+    #print("2, 2, 2, 6, 1 --> ", gen_all_holds([2, 2, 2, 6, 1]))
+    #print("5, 5, 6, 6, 1 --> ", gen_all_holds([5, 5, 6, 6, 1]))
+    #print("1, 1, 6, 6, 1 --> ", gen_all_holds([1, 1, 6, 6, 1]))
     return
 
 run_example()
